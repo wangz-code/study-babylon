@@ -79,7 +79,7 @@ const locationChange = (type: "x" | "y" | "z") => {
 
 // 添加mesh 网格
 const meshChange = () => {
-	BABYLON.SceneLoader.ImportMesh("", "/mesh/", "Yeti.gltf", scene, function (newMeshes) {
+	BABYLON.SceneLoader.ImportMesh("", "./mesh/", "Yeti.gltf", scene, function (newMeshes) {
 		console.log("newMeshes 加载完成 log==>", newMeshes);
 		if (newMeshes) {
 			newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
