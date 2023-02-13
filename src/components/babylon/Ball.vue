@@ -48,6 +48,7 @@ const colorChange = () => {
 	const ground = scene.getMeshByName("ground");
 	if (ground) ground.material = groundMaterial;
 };
+
 // 材质
 const textureChange = () => {
 	const groundMaterial = new BABYLON.StandardMaterial("Material", scene);
@@ -76,11 +77,13 @@ const locationChange = (type: "x" | "y" | "z") => {
 	if (sphere) sphere.position[type] += 0.2;
 };
 
-// 添加mesh 网
+// 添加mesh 网格
 const meshChange = () => {
-	BABYLON.SceneLoader.ImportMesh("", "/static/mesh/", "Yeti.gltf", scene, function (newMeshes) {
+	BABYLON.SceneLoader.ImportMesh("", "/mesh/", "Yeti.gltf", scene, function (newMeshes) {
 		console.log("newMeshes 加载完成 log==>", newMeshes);
-		if (newMeshes) newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
+		if (newMeshes) {
+			newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
+		}
 	});
 };
 onMounted(() => {
@@ -94,7 +97,7 @@ onMounted(() => {
 
 		// This creates and positions a free camera (non-mesh)
 
-		var camera = new BABYLON.ArcRotateCamera("camera", BABYLON.Tools.ToRadians(90), BABYLON.Tools.ToRadians(65), 10, BABYLON.Vector3.Zero(), scene);
+		var camera = new BABYLON.ArcRotateCamera("camera", BABYLON.Tools.ToRadians(-90), BABYLON.Tools.ToRadians(65), 10, BABYLON.Vector3.Zero(), scene);
 		camera.useAutoRotationBehavior = true;
 		// This attaches the camera to the canvas
 		camera.attachControl(canvas, true);
